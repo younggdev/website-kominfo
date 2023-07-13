@@ -16,18 +16,49 @@ function prev() {
 
 setInterval(next, 5000);
 
+let profil = document.querySelectorAll(".profil-container");
+let index_profil = 0;
+
+function lanjut() {
+  profil[index_profil].classList.remove("active");
+  index_profil = (index_profil + 1) % profil.length;
+  profil[index_profil].classList.add("active");
+}
+
+function ulang() {
+  profil[index_profil].classList.remove("active");
+  index_profil = (index_profil - 1 + profil.length) % profil.length;
+  profil[index_profil].classList.add("active");
+}
 // Berita
-let container = document.querySelector(".grid-cols-2");
-let content = `<a class="block" href="#"> <img src="IMG/bg3.jpeg" alt="" class="w-[28%] float-left mr-4" />
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, temporibus!</p>
-<a href="">Baca Selengkapnya</a>
-<hr class="my-2" /></a>`;
+// let container = document.querySelector(".grid-cols-2");
+// let content = `<a class="block" href="#"> <img src="IMG/bg3.jpeg" alt="" class="w-[28%] float-left mr-4" />
+// <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, temporibus!</p>
+// <a href="">Baca Selengkapnya</a>
+// <hr class="my-2" /></a>`;
 
 // Galeri
 let containerGaleri = document.querySelector(".congaleri");
-let contentGaleri = `<img src="img/bg2.png" alt="" class="rounded-md hover:scale-110 transition-all duration-500" />`;
+let contentGaleri = `<div class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3] bg-sky-400 rounded-lg overflow-hidden group relative">
+<div class="w-full h-full bg-[url('img/bg2.png')] bg-cover bg-center group-hover:scale-110 transition-all duration-300"></div>
+<div class="bg-[#339BEB] w-full bg-opacity-75 text-white p-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-8 group-hover:-bottom-0">
+  <p class="text-sm">Lorem ipsum dolor sit amet.</p>
+</div>
+</div>`;
 
 for (let i = 0; i < 4; i++) {
-  container.innerHTML += content;
+  // container.innerHTML += content;
   containerGaleri.innerHTML += contentGaleri;
 }
+
+// Logo
+var copy = document.querySelector(".logos-slide").cloneNode(true);
+document.querySelector(".logos").appendChild(copy);
+
+// Navbar
+const nav = document.querySelector(".fa-bars");
+const navbar = document.querySelector(".navbar");
+
+nav.addEventListener("click", () => {
+  navbar.classList.toggle("invisible");
+});
