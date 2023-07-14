@@ -16,6 +16,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   </head>
   <body>
     <!-- Navbar Starts -->
@@ -64,7 +65,7 @@
       </div>
     </nav> -->
 
-    <header class="w-full h-[80px] flex items-center justify-between text-white z-50 fixed">
+    <!-- <header class="w-full h-[80px] flex items-center justify-between text-white z-50 fixed">
       <div class="flex items-center justify-between w-full px-5 relative">
         <div class="flex">
           <img src="img/kominfo_putih1.png" alt="" class="w-12 md:w-[4rem]" />
@@ -83,6 +84,106 @@
         <div class="lg:hidden cursor-pointer">
           <i class="fas fa-bars text-2xl"></i>
         </div>
+      </div>
+    </header> -->
+
+    <!-- component -->
+
+    <header class="fixed z-50 w-full transition-all duration-500 text-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
+      <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+        <div class="p-4 flex flex-row items-center justify-between">
+          <div class="flex">
+            <img src="img/kominfo_putih1.png" alt="" class="w-12 md:w-[4rem]" />
+            <div class="ml-5">
+              <p>DINAS KOMUNIKASI DAN INFORMATIKA</p>
+              <p>KABUPATEN PURWAKARTA</p>
+            </div>
+          </div>
+          <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+              <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+              <path
+                x-show="open"
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+        <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row dropnav transition-all duration-700">
+          <a
+            class="px-4 py-2 mt-2 mx-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            href="#"
+            >Beranda</a
+          >
+          <a
+            class="px-4 py-2 mt-2 mx-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            href="#berita"
+            >Berita</a
+          >
+          <div @click.away="open = false" class="relative" x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="flex flex-row items-center w-full px-4 py-2 mt-2 mx-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+              <span>Bidang</span>
+              <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-100"
+              x-transition:enter-start="transform opacity-0 scale-95"
+              x-transition:enter-end="transform opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-75"
+              x-transition:leave-start="transform opacity-100 scale-100"
+              x-transition:leave-end="transform opacity-0 scale-95"
+              class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+              <div class="px-2 py-2 rounded-md shadow dropnav2 transition-all duration-500 delay-100">
+                <a
+                  class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="#"
+                  >Sekretariat</a
+                >
+                <a
+                  class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="#"
+                  >IKP</a
+                >
+                <a
+                  class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="#"
+                  >Keamanan dan Persandian</a
+                >
+                <a
+                  class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="#"
+                  >Server dan Jaringan</a
+                >
+                <a
+                  class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="#"
+                  >Statistik</a
+                >
+                <a
+                  class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="#"
+                  >Aplikasi dan Telematika</a
+                >
+              </div>
+            </div>
+          </div>
+          <a
+            class="px-4 py-2 mt-2 mx-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            href="#"
+            >Profil</a
+          >
+          <a
+            class="px-4 py-2 mt-2 mx-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            href="#"
+            >Kontak Kami</a
+          >
+        </nav>
       </div>
     </header>
     <!-- Navbar Ends -->
@@ -241,69 +342,72 @@
     <hr class="px-5 mt-8" />
 
     <!-- Galeri Starts -->
-    <!-- <section class="p-5">
-      <p class="pb-5 text-xl font-semibold">GALERI</p>
-      <div class="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4 md:p-4 p-2 cursor-pointer congaleri"></div>
-      <div class="flex justify-center">
-        <a href="" class="mt-5 px-3 py-2 rounded-md border-slate-200 border-2 hover:bg-slate-200 transition-all duration-500">Selengkapnya</a>
-      </div>
-      <hr class="mt-8" />
-    </section> -->
 
-    <!-- <section>
+    <section>
       <div class="grid grid-cols-2">
         <div class="px-5">
-          <p class="px-5 py-5"><i class="bi bi-person-fill pr-5"></i>Pegawai Struktural</p>
-          <div class="flex profil-container active">
-            <div class="flex items-center">
-              <div id="ulang" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center left-0 rounded-r-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300" onclick="ulang()">
-                <
+          <p class="px-5 py-5"><i class="bi bi-person-fill pr-5"></i>Profil Struktural</p>
+          <div class="profil-container active">
+            <div class="flex justify-between">
+              <div class="satu flex items-center">
+                <div id="prev" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center rounded-r-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300 mr-3" onclick="ulang()">
+                  &lt;
+                </div>
+                <div>
+                  <img src="img/profil.jpg" alt="profil satu" />
+                  <div class="text-center mt-5">
+                    <p>NAMA</p>
+                    <p>JABATAN</p>
+                    <p>BIDANG</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <img src="img/profil.jpg" alt="" class="px-5" />
-                <p class="px-5 pt-5 text-center">Nama</p>
-                <p class="px-5 text-center">Jabatan</p>
-                <p class="px-5 text-center">Bidang</p>
-              </div>
-            </div>
-            <div class="flex items-center">
-              <div>
-                <img src="img/profil.jpg" alt="" class="px-5" />
-                <p class="px-5 pt-5 text-center">Nama</p>
-                <p class="px-5 text-center">Jabatan</p>
-                <p class="px-5 text-center">Bidang</p>
-              </div>
-              <div id="lanjut" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center left-0 rounded-l-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300" onclick="lanjut()">
-                >
+              <div class="satu flex items-center">
+                <div>
+                  <img src="img/profil.jpg" alt="profil satu" />
+                  <div class="text-center mt-5">
+                    <p>NAMA</p>
+                    <p>JABATAN</p>
+                    <p>BIDANG</p>
+                  </div>
+                </div>
+                <div id="prev" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center mt-5 rounded-l-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300 ml-3" onclick="lanjut()">
+                  &gt;
+                </div>
               </div>
             </div>
           </div>
-          <div class="flex profil-container">
-            <div class="flex items-center">
-              <div id="ulang" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center left-0 rounded-r-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300" onclick="ulang()">
-                <
+          <div class="profil-container">
+            <div class="flex justify-between">
+              <div class="satu flex items-center">
+                <div id="prev" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center mt-5 rounded-r-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300 mr-3" onclick="ulang()">
+                  &lt;
+                </div>
+                <div>
+                  <img src="img/profil2.jpg" alt="profil satu" />
+                  <div class="text-center mt-5">
+                    <p>NAMA</p>
+                    <p>JABATAN</p>
+                    <p>BIDANG</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <img src="img/profil2.jpg" alt="" class="px-5" />
-                <p class="px-5 pt-5 text-center">Nama</p>
-                <p class="px-5 text-center">Jabatan</p>
-                <p class="px-5 text-center">Bidang</p>
-              </div>
-            </div>
-            <div class="flex items-center">
-              <div>
-                <img src="img/profil2.jpg" alt="" class="px-5" />
-                <p class="px-5 pt-5 text-center">Nama</p>
-                <p class="px-5 text-center">Jabatan</p>
-                <p class="px-5 text-center">Bidang</p>
-              </div>
-              <div id="lanjut" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center left-0 rounded-l-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300" onclick="lanjut()">
-                >
+              <div class="satu flex items-center">
+                <div>
+                  <img src="img/profil2.jpg" alt="profil satu" />
+                  <div class="text-center mt-5">
+                    <p>NAMA</p>
+                    <p>JABATAN</p>
+                    <p>BIDANG</p>
+                  </div>
+                </div>
+                <div id="prev" class="bg-[#fff] text-[#333] font-bold py-1 w-8 md:py-3 md:w-12 text-3xl cursor-pointer text-center rounded-l-md hover:bg-[#666] transition-all duration-300 hover:text-slate-300 ml-3" onclick="lanjut()">
+                  &gt;
+                </div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="px-5">
           <p class="px-5 py-5"><i class="bi bi-image pr-5"></i>Galeri</p>
           <div class="grid grid-cols-2">
@@ -322,7 +426,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
     <!-- Galeri Ends -->
 
     <!-- Logo Starts -->

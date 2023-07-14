@@ -38,27 +38,49 @@ function ulang() {
 // <hr class="my-2" /></a>`;
 
 // Galeri
-let containerGaleri = document.querySelector(".congaleri");
-let contentGaleri = `<div class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3] bg-sky-400 rounded-lg overflow-hidden group relative">
-<div class="w-full h-full bg-[url('img/bg2.png')] bg-cover bg-center group-hover:scale-110 transition-all duration-300"></div>
-<div class="bg-[#339BEB] w-full bg-opacity-75 text-white p-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-8 group-hover:-bottom-0">
-  <p class="text-sm">Lorem ipsum dolor sit amet.</p>
-</div>
-</div>`;
+// let containerGaleri = document.querySelector(".congaleri");
+// let contentGaleri = `<div class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3] bg-sky-400 rounded-lg overflow-hidden group relative">
+// <div class="w-full h-full bg-[url('img/bg2.png')] bg-cover bg-center group-hover:scale-110 transition-all duration-300"></div>
+// <div class="bg-[#339BEB] w-full bg-opacity-75 text-white p-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-8 group-hover:-bottom-0">
+//   <p class="text-sm">Lorem ipsum dolor sit amet.</p>
+// </div>
+// </div>`;
 
-for (let i = 0; i < 4; i++) {
-  // container.innerHTML += content;
-  containerGaleri.innerHTML += contentGaleri;
-}
+// for (let i = 0; i < 4; i++) {
+//   // container.innerHTML += content;
+//   containerGaleri.innerHTML += contentGaleri;
+// }
 
 // Logo
 var copy = document.querySelector(".logos-slide").cloneNode(true);
 document.querySelector(".logos").appendChild(copy);
 
 // Navbar
-const nav = document.querySelector(".fa-bars");
-const navbar = document.querySelector(".navbar");
+// const nav = document.querySelector(".fa-bars");
+// const navbar = document.querySelector(".navbar");
 
-nav.addEventListener("click", () => {
-  navbar.classList.toggle("invisible");
+// nav.addEventListener("click", () => {
+//   navbar.classList.toggle("invisible");
+// });
+
+// function myFunction() {
+//   var x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
+const header = document.querySelector("header");
+window.addEventListener("scroll", function () {
+  header.classList.toggle("bg-[#0082e6]", window.scrollY > 5);
+});
+
+const bgnav = document.querySelector(".dropnav");
+window.addEventListener("scroll", function () {
+  bgnav.classList.toggle("droplink", window.scrollY > 5);
+});
+const bgnav2 = document.querySelector(".dropnav2");
+window.addEventListener("scroll", function () {
+  bgnav2.classList.toggle("droplink2", window.scrollY > 5);
 });
